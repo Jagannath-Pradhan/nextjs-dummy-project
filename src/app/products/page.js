@@ -1,23 +1,20 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import DeleteProduct from "./components/DeleteProduct";
 
 const getProducts = async () => {
-    // const response = await fetch("http://localhost:3000/api/products")
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const response = await fetch(`${baseUrl}/api/products`)
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
+    const response = await fetch(`${baseUrl}/api/products`, { cache: "no-store" });
     const data = await response.json();
 
-    if (data.success) {
-        return data.result;
-    } else {
-        console.error("Failed to fetch products:", data.error);
-        return [];
-    }
-}
+    if (data.success) return data.result;
+    console.error("Failed to fetch products:", data.error);
+    return [];
+};
 
 export default async function ProductsPage() {
     const products = await getProducts();
-    // console.log(products)
 
     return (
         <div>
@@ -41,7 +38,7 @@ export default async function ProductsPage() {
                             <td>{product.company}</td>
                             <td>{product.category}</td>
                             <td>
-                                <Link href={"/products/" + product._id}>Edit</Link>
+                                <Link href={`/products/${product._id}`}>Edit</Link>
                                 <DeleteProduct id={product._id} />
                             </td>
                         </tr>
