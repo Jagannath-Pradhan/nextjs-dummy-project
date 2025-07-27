@@ -16,7 +16,8 @@ export default function AddProductPage() {
     const addProduct = async () => {
         // console.log(name, price, color, company, category);
         // let result = await fetch("/api/products", {                      //or
-        let result = await fetch("http://localhost:3000/api/products", {
+        // let result = await fetch("http://localhost:3000/api/products", {
+        let result = await fetch("/api/products", {
             method: "POST",
             body: JSON.stringify({ name, price, color, company, category })
         });

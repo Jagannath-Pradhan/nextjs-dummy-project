@@ -17,7 +17,8 @@ export default function EditProductPage() {
 
     useEffect(() => {
         const getProductDetails = async () => {
-            const response = await fetch(`http://localhost:3000/api/products/${params.editProduct}`);
+            // const response = await fetch(`http://localhost:3000/api/products/${params.editProduct}`);
+            const response = await fetch(`/api/products/${params.editProduct}`);
             const data = await response.json();
             console.log(data);
 
@@ -38,7 +39,8 @@ export default function EditProductPage() {
     const updateProduct = async () => {
         const updatedProduct = { name, price, color, company, category };
 
-        const response = await fetch(`http://localhost:3000/api/products/${params.editProduct}`, {
+        // const response = await fetch(`http://localhost:3000/api/products/${params.editProduct}`, {
+        const response = await fetch(`/api/products/${params.editProduct}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

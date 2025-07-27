@@ -2,7 +2,8 @@ import Link from "next/link";
 import DeleteProduct from "./components/DeleteProduct";
 
 const getProducts = async () => {
-    const response = await fetch("http://localhost:3000/api/products")
+    // const response = await fetch("http://localhost:3000/api/products")
+    const response = await fetch("/api/products")
     const data = await response.json();
 
     if (data.success) {
