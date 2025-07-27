@@ -3,7 +3,8 @@ import DeleteProduct from "./components/DeleteProduct";
 
 const getProducts = async () => {
     // const response = await fetch("http://localhost:3000/api/products")
-    const response = await fetch("/api/products")
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const response = await fetch(`${baseUrl}/api/products`)
     const data = await response.json();
 
     if (data.success) {

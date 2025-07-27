@@ -18,7 +18,8 @@ export default function EditProductPage() {
     useEffect(() => {
         const getProductDetails = async () => {
             // const response = await fetch(`http://localhost:3000/api/products/${params.editProduct}`);
-            const response = await fetch(`/api/products/${params.editProduct}`);
+            const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+            const response = await fetch(`${baseUrl}/api/products/${params.editProduct}`);
             const data = await response.json();
             console.log(data);
 
