@@ -27,6 +27,7 @@ export default async function ProductsPage() {
                         <th>Color</th>
                         <th>Company</th>
                         <th>Category</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
